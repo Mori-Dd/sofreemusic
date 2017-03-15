@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_birds"
+            android:icon="@drawable/nav_bird"
+            android:title="Birds"/>
+
+        <item
+            android:id="@+id/nav_rain"
+            android:icon="@drawable/nav_rain"
+            android:title="Rain"/>
+        <item
+            android:id="@+id/nav_wind"
+            android:icon="@drawable/nav_wind"
+            android:title="Wind"/>
+        <item
+            android:id="@+id/nav_fire"
+            android:icon="@drawable/nav_fire"
+            android:title="Fire"/>
+    </group>
+</menu>
