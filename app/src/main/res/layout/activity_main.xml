@@ -1,39 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/root"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#000"
-  >
-        <com.example.sofreemusic.DrawView
+<android.support.v4.widget.DrawerLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:background="#000"
+            >
+
+
         <ImageView
             android:id="@+id/music_image1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:src="@drawable/bird_im"
             android:visibility="gone"/>
         <ImageView
             android:id="@+id/music_image2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/music_image1"
+            android:src="@drawable/rain_im"
+
             android:visibility="gone"/>
         <ImageView
             android:id="@+id/music_image3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/music_image2"
+            android:src="@drawable/wind_im"
             android:visibility="gone"/>
         <ImageView
             android:id="@+id/music_image4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/music_image3"
+            android:src="@drawable/fire_im"
             android:visibility="gone"/>
+
         <ImageButton
         android:id="@+id/nav_bn"
         android:layout_width="wrap_content"
@@ -41,4 +48,11 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:src="@drawable/nav_list"/>
+        <ImageView
+            android:id="@+id/circle_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/circle_im"/>
 </RelativeLayout>
+
+</android.support.v4.widget.DrawerLayout>

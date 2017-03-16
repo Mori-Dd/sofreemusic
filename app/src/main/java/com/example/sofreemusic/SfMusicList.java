@@ -11,15 +11,14 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-public class SfMusicList extends AppCompatActivity {
-    private DrawerLayout drawerLayout;
+public class SfMusicList extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sf_music_list);
 
-        NavigationView navigationView = (NavigationView)findViewById(R.id.nav_view);//获取实例
+        NavigationView navigationView = (NavigationView)findViewById(R.id.nav_view);//获取菜单实例
        // navigationView.setCheckedItem(R.id.nav_bird);//设置Call菜单项为默认选中项
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {//设置任意菜单点击事件
             @Override
@@ -45,8 +44,9 @@ public class SfMusicList extends AppCompatActivity {
                         setResult(4,fireintent);
                         finish();
                         break;
+                    default:
+                        break;
                 }
-
                 return true;
             }
         });
