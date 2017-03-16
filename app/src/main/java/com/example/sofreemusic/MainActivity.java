@@ -1,7 +1,12 @@
 package com.example.sofreemusic;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -51,10 +56,10 @@ private List<ImageView> imageViewList = new ArrayList<>();
         screenWidth = dm.widthPixels;
         screenHeight = dm.heightPixels - 50;
         circleImage.setOnTouchListener(movingEventListener);
-        for (ImageView imageView:imageViewList) {
+        for (final ImageView imageView:imageViewList) {
             imageView.setOnTouchListener(movingEventListener);
-
         }
+
 
 
         navbn = (ImageButton) findViewById(R.id.nav_bn);
@@ -159,11 +164,13 @@ private List<ImageView> imageViewList = new ArrayList<>();
                     case 11:
                         for (ImageView imageview:imageViewList) {
                             imageview.setVisibility(View.GONE);
+                            MusicList.stopPlayer();
                         }
                         break;
                     case 1:
                         if (musicImage1.getVisibility() == View.GONE) {
                             musicImage1.setVisibility(View.VISIBLE);
+                            MusicList.setMediaPlayer(this,0);
                         }else {
                             Toast.makeText(MainActivity.this,"已添加过此音乐",Toast.LENGTH_SHORT).show();
                         }
@@ -173,6 +180,7 @@ private List<ImageView> imageViewList = new ArrayList<>();
                     case 2:
                         if (musicImage2.getVisibility() == View.GONE) {
                             musicImage2.setVisibility(View.VISIBLE);
+                            MusicList.setMediaPlayer(this,1);
                         }else {
                             Toast.makeText(MainActivity.this,"已添加过此音乐",Toast.LENGTH_SHORT).show();
                         }
@@ -181,6 +189,7 @@ private List<ImageView> imageViewList = new ArrayList<>();
                     case 3:
                         if (musicImage3.getVisibility() == View.GONE) {
                             musicImage3.setVisibility(View.VISIBLE);
+                            MusicList.setMediaPlayer(this,2);
                         }else {
                             Toast.makeText(MainActivity.this,"已添加过此音乐",Toast.LENGTH_SHORT).show();
                         }
@@ -189,6 +198,7 @@ private List<ImageView> imageViewList = new ArrayList<>();
                     case 4:
                         if (musicImage4.getVisibility() == View.GONE) {
                             musicImage4.setVisibility(View.VISIBLE);
+                            MusicList.setMediaPlayer(this,3);
                         }else {
                             Toast.makeText(MainActivity.this,"已添加过此音乐",Toast.LENGTH_SHORT).show();
                         }
