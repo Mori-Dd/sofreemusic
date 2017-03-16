@@ -3,10 +3,12 @@ package com.example.sofreemusic;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +17,7 @@ import java.util.List;
 public class MainActivity extends BaseActivity {
 private List<ImageView> imageViewList = new ArrayList<>();
 
+    private static final String TAG = "MainActivity";
     private ImageButton navbn;
     private ImageView circleImage;
     private ImageView musicImage1;
@@ -27,7 +30,7 @@ private List<ImageView> imageViewList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        Log.d(TAG, "onCreate: ");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -50,6 +53,7 @@ private List<ImageView> imageViewList = new ArrayList<>();
         circleImage.setOnTouchListener(movingEventListener);
         for (ImageView imageView:imageViewList) {
             imageView.setOnTouchListener(movingEventListener);
+
         }
 
 
@@ -62,6 +66,44 @@ private List<ImageView> imageViewList = new ArrayList<>();
             }
         });
     }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+     //   Log.d(TAG, "onStart: ");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+     //   Log.d(TAG, "onResume: ");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+     //   Log.d(TAG, "onPause: ");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+      //  Log.d(TAG, "onStop: ");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+      //  Log.d(TAG, "onDestroy: ");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+     //   Log.d(TAG, "onRestart: ");
+    }
+
     //托动图片
     private View.OnTouchListener movingEventListener = new View.OnTouchListener() {
         int lastX, lastY;
@@ -70,6 +112,7 @@ private List<ImageView> imageViewList = new ArrayList<>();
         public boolean onTouch(View v, MotionEvent event) {
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
+
                     lastX = (int) event.getRawX();
                     lastY = (int) event.getRawY();
                     break;
@@ -113,22 +156,43 @@ private List<ImageView> imageViewList = new ArrayList<>();
         switch (requestCode) {
             case 1:
                 switch (resultCode) {
-                    case 0:
+                    case 11:
                         for (ImageView imageview:imageViewList) {
                             imageview.setVisibility(View.GONE);
                         }
                         break;
                     case 1:
-                        musicImage1.setVisibility(View.VISIBLE);
+                        if (musicImage1.getVisibility() == View.GONE) {
+                            musicImage1.setVisibility(View.VISIBLE);
+                        }else {
+                            Toast.makeText(MainActivity.this,"已添加过此音乐",Toast.LENGTH_SHORT).show();
+                        }
+
+                        Log.d(TAG, "1: ");
                         break;
                     case 2:
-                        musicImage2.setVisibility(View.VISIBLE);
+                        if (musicImage2.getVisibility() == View.GONE) {
+                            musicImage2.setVisibility(View.VISIBLE);
+                        }else {
+                            Toast.makeText(MainActivity.this,"已添加过此音乐",Toast.LENGTH_SHORT).show();
+                        }
+                        Log.d(TAG, "2: ");
                         break;
                     case 3:
-                        musicImage3.setVisibility(View.VISIBLE);
+                        if (musicImage3.getVisibility() == View.GONE) {
+                            musicImage3.setVisibility(View.VISIBLE);
+                        }else {
+                            Toast.makeText(MainActivity.this,"已添加过此音乐",Toast.LENGTH_SHORT).show();
+                        }
+                        Log.d(TAG, "3: ");
                         break;
                     case 4:
-                        musicImage4.setVisibility(View.VISIBLE);
+                        if (musicImage4.getVisibility() == View.GONE) {
+                            musicImage4.setVisibility(View.VISIBLE);
+                        }else {
+                            Toast.makeText(MainActivity.this,"已添加过此音乐",Toast.LENGTH_SHORT).show();
+                        }
+                        Log.d(TAG, "4: ");
                         break;
                 }
                 break;

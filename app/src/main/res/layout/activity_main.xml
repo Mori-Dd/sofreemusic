@@ -11,18 +11,20 @@
             android:background="#000"
             >
 
-
         <ImageView
             android:id="@+id/music_image1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/bird_im"
+            android:layout_above="@+id/circle_image"
+            android:layout_toLeftOf="@+id/circle_image"
             android:visibility="gone"/>
         <ImageView
             android:id="@+id/music_image2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/music_image1"
+            android:layout_above="@+id/circle_image"
+            android:layout_toRightOf="@+id/circle_image"
             android:src="@drawable/rain_im"
 
             android:visibility="gone"/>
@@ -30,14 +32,16 @@
             android:id="@+id/music_image3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/music_image2"
+            android:layout_below="@+id/circle_image"
+            android:layout_toLeftOf="@+id/circle_image"
             android:src="@drawable/wind_im"
             android:visibility="gone"/>
         <ImageView
             android:id="@+id/music_image4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/music_image3"
+            android:layout_below="@+id/circle_image"
+            android:layout_toRightOf="@+id/circle_image"
             android:src="@drawable/fire_im"
             android:visibility="gone"/>
 
@@ -52,6 +56,7 @@
             android:id="@+id/circle_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:src="@drawable/circle_im"/>
 </RelativeLayout>
 

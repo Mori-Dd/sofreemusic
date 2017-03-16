@@ -14,6 +14,7 @@ public class MusicMenu extends BaseActivity implements View.OnClickListener{
     private ImageView delete_image;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music_menu);
         close_image = (ImageView)findViewById(R.id.close_view);
@@ -56,11 +57,11 @@ public class MusicMenu extends BaseActivity implements View.OnClickListener{
                 AlertDialog.Builder dialogclear = new AlertDialog.Builder(this);
                 dialogclear.setTitle("提示");
                 dialogclear.setMessage("是否清空所有音乐?");
-                dialogclear.setCancelable(false);
+                dialogclear.setCancelable(true);
                 dialogclear.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        setResult(0);
+                        setResult(11);
                         finish();
                     }
                 });
