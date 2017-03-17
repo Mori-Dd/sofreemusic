@@ -1,6 +1,8 @@
 package com.example.sofreemusic;
 
+import android.app.Service;
 import android.content.Context;
+import android.media.AudioManager;
 import android.support.design.widget.Snackbar;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
@@ -62,10 +64,10 @@ public class OnTouchUntil {
                     break;
                 case MotionEvent.ACTION_MOVE:
                     //判断图片与圆环距离
-                    if (imageX-circleX>300 & imageY-circleY>500) {
-                   //     MusicList.stopPlayer();
+                    if (imageX-circleX> 0& imageY-circleY>0) {
+                        
                     }else{
-                   //   MusicList.setMediaPlayer(context,);
+
                     }
 
 
