@@ -4,14 +4,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+/**
+ *
+ */
 public class MusicMenu extends BaseActivity implements View.OnClickListener{
-    private MediaPlayer mediaPlayer = new MediaPlayer();
-
     private ImageView close_image;
     private ImageView add_image;
     private ImageView delete_image;
@@ -32,6 +32,7 @@ public class MusicMenu extends BaseActivity implements View.OnClickListener{
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            //结束本程序
             case R.id.close_view:
                 AlertDialog.Builder dialogFinish = new AlertDialog.Builder(this);
                 dialogFinish.setTitle("提示");
@@ -50,12 +51,13 @@ public class MusicMenu extends BaseActivity implements View.OnClickListener{
                     }
                 });
                 dialogFinish.show();
-
                 break;
+            //添加音乐
             case R.id.add_view:
                 Intent intent = new Intent(MusicMenu.this,SfMusicList.class);
                 startActivityForResult(intent,1);
                 break;
+            //清空音乐
             case R.id.delete_view:
                 AlertDialog.Builder dialogclear = new AlertDialog.Builder(this);
                 dialogclear.setTitle("提示");
@@ -81,32 +83,16 @@ public class MusicMenu extends BaseActivity implements View.OnClickListener{
         }
     }
 
+    //返回结果给MainActivity进行判断用户选择了哪个音乐
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case 1:
-                switch (resultCode) {
-                    case 1:
-                        setResult(1);
-                        finish();
-                        break;
-                    case 2:
-                        setResult(2);
-                        finish();
-                        break;
-                    case 3:
-                        setResult(3);
-                        finish();
-                        break;
-                    case 4:
-                        setResult(4);
-                        finish();
-                        break;
-                }
+                setResult(resultCode);
+                finish();
                 break;
             default:
                 break;
-
         }
     }
 }

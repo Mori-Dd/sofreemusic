@@ -1,26 +1,23 @@
 package com.example.sofreemusic;
 
-import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class MainActivity extends BaseActivity {
-private List<ImageView> imageViewList = new ArrayList<>();
+    private List<ImageView> imageViewList = new ArrayList<>();
 
     private static final String TAG = "MainActivity";
     private ImageButton navbn;
@@ -45,7 +42,6 @@ private List<ImageView> imageViewList = new ArrayList<>();
         musicImage3 = (ImageView) findViewById(R.id.music_image3);
         musicImage4 = (ImageView) findViewById(R.id.music_image4);
 
-
         imageViewList.add(musicImage1);
         imageViewList.add(musicImage2);
         imageViewList.add(musicImage3);
@@ -56,57 +52,19 @@ private List<ImageView> imageViewList = new ArrayList<>();
         screenWidth = dm.widthPixels;
         screenHeight = dm.heightPixels - 50;
         circleImage.setOnTouchListener(movingEventListener);
-        for (final ImageView imageView:imageViewList) {
+        for (final ImageView imageView : imageViewList) {
             imageView.setOnTouchListener(movingEventListener);
         }
 
-
-
+        //菜单按钮
         navbn = (ImageButton) findViewById(R.id.nav_bn);
         navbn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                 Intent intent = new Intent(MainActivity.this,MusicMenu.class);
-                startActivityForResult(intent,1);
+                Intent intent = new Intent(MainActivity.this, MusicMenu.class);
+                startActivityForResult(intent, 1);
             }
         });
-    }
-
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-     //   Log.d(TAG, "onStart: ");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-     //   Log.d(TAG, "onResume: ");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-     //   Log.d(TAG, "onPause: ");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-      //  Log.d(TAG, "onStop: ");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-      //  Log.d(TAG, "onDestroy: ");
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-     //   Log.d(TAG, "onRestart: ");
     }
 
     //托动图片
@@ -156,58 +114,67 @@ private List<ImageView> imageViewList = new ArrayList<>();
         }
     };
 
+    //判断用户添加了哪一个音乐
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        int index = resultCode-1;//定义数组下标
         switch (requestCode) {
             case 1:
-                switch (resultCode) {
-                    case 11:
-                        for (ImageView imageview:imageViewList) {
+                List resList = new ArrayList<>();
+                resList.add(resultCode);
+                for (int i = 0; i < resList.size(); i++) {
+                    if (resultCode == 11) {
+                        for (ImageView imageview : imageViewList) {
                             imageview.setVisibility(View.GONE);
                             MusicList.stopPlayer();
                         }
-                        break;
-                    case 1:
-                        if (musicImage1.getVisibility() == View.GONE) {
-                            musicImage1.setVisibility(View.VISIBLE);
-                            MusicList.setMediaPlayer(this,0);
-                        }else {
-                            Toast.makeText(MainActivity.this,"已添加过此音乐",Toast.LENGTH_SHORT).show();
+                    } else {
+                        for (final ImageView imageView : imageViewList) {
+                            if (index == imageViewList.indexOf(imageView)) {
+                                if (imageView.getVisibility() == View.GONE) {
+                                    imageView.setVisibility(View.VISIBLE);
+                                    MusicList.setMediaPlayer(this, index);
+                                } else {
+                                    Toast.makeText(MainActivity.this, "已添加过此音乐", Toast.LENGTH_SHORT).show();
+                                }
+                            }
                         }
-
-                        Log.d(TAG, "1: ");
-                        break;
-                    case 2:
-                        if (musicImage2.getVisibility() == View.GONE) {
-                            musicImage2.setVisibility(View.VISIBLE);
-                            MusicList.setMediaPlayer(this,1);
-                        }else {
-                            Toast.makeText(MainActivity.this,"已添加过此音乐",Toast.LENGTH_SHORT).show();
-                        }
-                        Log.d(TAG, "2: ");
-                        break;
-                    case 3:
-                        if (musicImage3.getVisibility() == View.GONE) {
-                            musicImage3.setVisibility(View.VISIBLE);
-                            MusicList.setMediaPlayer(this,2);
-                        }else {
-                            Toast.makeText(MainActivity.this,"已添加过此音乐",Toast.LENGTH_SHORT).show();
-                        }
-                        Log.d(TAG, "3: ");
-                        break;
-                    case 4:
-                        if (musicImage4.getVisibility() == View.GONE) {
-                            musicImage4.setVisibility(View.VISIBLE);
-                            MusicList.setMediaPlayer(this,3);
-                        }else {
-                            Toast.makeText(MainActivity.this,"已添加过此音乐",Toast.LENGTH_SHORT).show();
-                        }
-                        Log.d(TAG, "4: ");
-                        break;
+                    }
                 }
                 break;
             default:
                 break;
         }
+    }
+
+    //退出提示
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+
+            AlertDialog.Builder dialogBack = new AlertDialog.Builder(this);
+            dialogBack.setTitle("真的不听了吗？");
+            dialogBack.setMessage("如果您想要后台听音乐，请按Home键，否则将无法继续为您播放美妙的音乐！");
+            dialogBack.setCancelable(true);
+            dialogBack.setPositiveButton("确定退出", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    ActivityCollector.finishAll();
+                }
+            });
+            dialogBack.setNegativeButton("继续享受", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+            });
+            dialogBack.show();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        MusicList.stopPlayer();
     }
 }

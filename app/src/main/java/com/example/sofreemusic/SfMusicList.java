@@ -12,9 +12,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 public class SfMusicList extends BaseActivity {
-
+    int[] id = {R.id.nav_bird,R.id.nav_rain,R.id.nav_wind,R.id.nav_fire};
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sf_music_list);
 
@@ -23,33 +23,15 @@ public class SfMusicList extends BaseActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {//设置任意菜单点击事件
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.nav_bird:
-                        Intent birdintent = new Intent();
-                        setResult(1,birdintent);
-                    finish();
-                        break;
-                    case R.id.nav_rain:
-                        Intent rainintent = new Intent();
-                        setResult(2,rainintent);
+                for (int i = 0;i<id.length;i++) {
+                    if (item.getItemId() == id[i]) {
+                        Intent intent = new Intent();
+                        setResult(i+1,intent);
                         finish();
-                        break;
-                    case R.id.nav_wind:
-                        Intent windintent = new Intent();
-                        setResult(3,windintent);
-                        finish();
-                        break;
-                    case R.id.nav_fire:
-                        Intent fireintent = new Intent();
-                        setResult(4,fireintent);
-                        finish();
-                        break;
-                    default:
-                        break;
+                    }
                 }
                 return true;
             }
         });
-
     }
 }

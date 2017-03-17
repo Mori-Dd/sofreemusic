@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-/**
+/**创建管理Activity
  * Created by lgh on 2017/3/16.
  */
 

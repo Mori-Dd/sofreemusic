@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_bird"
-            android:icon="@drawable/nav_bird"
-            android:title="Bird"/>
+        android:id="@+id/nav_bird"
+        android:icon="@drawable/nav_bird"
+        android:title="Bird"/>
 
         <item
             android:id="@+id/nav_rain"
@@ -16,6 +16,74 @@
             android:title="Wind"/>
         <item
             android:id="@+id/nav_fire"
+            android:icon="@drawable/nav_fire"
+            android:title="Fire"/>
+        <item
+            android:id="@+id/nav_bird2"
+            android:icon="@drawable/nav_bird"
+            android:title="Bird"/>
+
+        <item
+            android:id="@+id/nav_rain2"
+            android:icon="@drawable/nav_rain"
+            android:title="Rain"/>
+        <item
+            android:id="@+id/nav_wind2"
+            android:icon="@drawable/nav_wind"
+            android:title="Wind"/>
+        <item
+            android:id="@+id/nav_fire2"
+            android:icon="@drawable/nav_fire"
+            android:title="Fire"/>
+        <item
+            android:id="@+id/nav_bird3"
+            android:icon="@drawable/nav_bird"
+            android:title="Bird"/>
+
+        <item
+            android:id="@+id/nav_rain3"
+            android:icon="@drawable/nav_rain"
+            android:title="Rain"/>
+        <item
+            android:id="@+id/nav_wind3"
+            android:icon="@drawable/nav_wind"
+            android:title="Wind"/>
+        <item
+            android:id="@+id/nav_fire3"
+            android:icon="@drawable/nav_fire"
+            android:title="Fire"/>
+        <item
+            android:id="@+id/nav_bird4"
+            android:icon="@drawable/nav_bird"
+            android:title="Bird"/>
+
+        <item
+            android:id="@+id/nav_rain4"
+            android:icon="@drawable/nav_rain"
+            android:title="Rain"/>
+        <item
+            android:id="@+id/nav_wind4"
+            android:icon="@drawable/nav_wind"
+            android:title="Wind"/>
+        <item
+            android:id="@+id/nav_fire4"
+            android:icon="@drawable/nav_fire"
+            android:title="Fire"/>
+        <item
+            android:id="@+id/nav_bird5"
+            android:icon="@drawable/nav_bird"
+            android:title="Bird"/>
+
+        <item
+            android:id="@+id/nav_rain5"
+            android:icon="@drawable/nav_rain"
+            android:title="Rain"/>
+        <item
+            android:id="@+id/nav_wind5"
+            android:icon="@drawable/nav_wind"
+            android:title="Wind"/>
+        <item
+            android:id="@+id/nav_fire5"
             android:icon="@drawable/nav_fire"
             android:title="Fire"/>
     </group>
