@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 /**
- *
+ *功能目录
  */
 public class MusicMenu extends BaseActivity implements View.OnClickListener{
     private ImageView close_image;
