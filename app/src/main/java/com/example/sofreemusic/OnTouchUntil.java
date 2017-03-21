@@ -1,13 +1,17 @@
 package com.example.sofreemusic;
 
+import android.app.Application;
 import android.app.Service;
 import android.content.Context;
 import android.media.AudioManager;
 import android.support.design.widget.Snackbar;
 import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+
 import com.example.sofreemusic.MainActivity;
 
 /**
@@ -15,7 +19,8 @@ import com.example.sofreemusic.MainActivity;
  */
 
 public class OnTouchUntil {
-
+    private RelativeLayout relativeLayout;
+    private Snackbar snackbar;
     private  int screenWidth;
     private int screenHeight;
     private ImageView imageView;
@@ -79,16 +84,18 @@ public class OnTouchUntil {
                     if (isLongClickModule) {
                         //处理长按事件
 
-                        Snackbar.make(imageView, "要删除这个音乐吗？", Snackbar.LENGTH_LONG).setAction("是的", new View.OnClickListener() {
+                       snackbar =  Snackbar.make(imageView, "要删除这个音乐吗？", Snackbar.LENGTH_INDEFINITE).setAction("是的", new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 MusicList.stopPlayer();
                                 imageView.setVisibility(View.GONE);
                             }
-                        }).show();
+                        });
+                        snackbar.show();
 
                     } else {
                         //其他模式
+                      
                     }
 
                     //设置图片拖动效果

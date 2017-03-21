@@ -25,14 +25,6 @@ public class WelcomeActivity extends BaseActivity {
 
         //控件初始化
         linearLayout = (LinearLayout)findViewById(R.id.pass_layout);
-        linearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
         textView = (TextView)findViewById(R.id.textView);
         animation = AnimationUtils.loadAnimation(this,R.anim.animation_text);
         handler_pass.sendEmptyMessageDelayed(0,1000);
@@ -41,7 +33,7 @@ public class WelcomeActivity extends BaseActivity {
     //设置倒计时0时跳转主界面
     private int getCount() {
         count--;
-        if (count == 0) {
+        if (count == 0 ) {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();
@@ -60,4 +52,13 @@ public class WelcomeActivity extends BaseActivity {
             }
         }
     };
+    private boolean isclicked(){
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        return true;
+    }
 }
