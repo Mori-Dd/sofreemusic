@@ -13,6 +13,9 @@ import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,14 +35,13 @@ public class MainActivity extends BaseActivity {
     private ImageView musicImage1;
     private ImageView musicImage2;
     private ImageView musicImage3;
-    private ImageView musicImage4;
+    private  ImageView musicImage4;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         circleImage = (ImageView) findViewById(R.id.circle_image);
         musicImage1 = (ImageView) findViewById(R.id.music_image1);

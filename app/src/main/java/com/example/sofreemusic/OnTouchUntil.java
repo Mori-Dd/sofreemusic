@@ -64,8 +64,8 @@ public class OnTouchUntil {
                     break;
                 case MotionEvent.ACTION_MOVE:
                     //判断图片与圆环距离
-                    if (imageX-circleX> 0& imageY-circleY>0) {
-                        
+                    if (imageX-circleX> 0 & imageY-circleY>0) {
+
                     }else{
 
                     }
