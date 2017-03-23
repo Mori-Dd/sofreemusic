@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SoFreeMusic.iml" filepath="$PROJECT_DIR$/SoFreeMusic.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sofreemusic.iml" filepath="$PROJECT_DIR$/sofreemusic.iml" />
     </modules>
   </component>
 </project>
