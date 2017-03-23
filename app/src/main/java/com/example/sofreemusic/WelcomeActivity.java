@@ -33,6 +33,15 @@ public class WelcomeActivity extends BaseActivity {
     //设置倒计时0时跳转主界面
     private int getCount() {
         count--;
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+                count = 0;
+            }
+        });
         if (count == 0 ) {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);

@@ -84,7 +84,7 @@ public class OnTouchUntil {
                     if (isLongClickModule) {
                         //处理长按事件
 
-                       snackbar =  Snackbar.make(imageView, "要删除这个音乐吗？", Snackbar.LENGTH_INDEFINITE).setAction("是的", new View.OnClickListener() {
+                       snackbar =  Snackbar.make(imageView, "要删除这个音乐吗？", Snackbar.LENGTH_LONG).setAction("是的", new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 MusicList.stopPlayer();
@@ -95,7 +95,7 @@ public class OnTouchUntil {
 
                     } else {
                         //其他模式
-                      
+
                     }
 
                     //设置图片拖动效果
